@@ -65,13 +65,20 @@ module.exports = function(app, server) {
             prime: crypto.prime
         });
 
+        console.log("prime : ,", crypto.prime)
         socket.on('client public key', function(key) {
             if (!chatReady) {
                 var serverKeys = crypto.generateKeys();
                 sessionKey = crypto.getSessionKey(key, serverKeys.priKey);
                 socket.emit('server public key', serverKeys.pubKey);
+
+                
+                console.log("privat key : ", serverKeys.priKey);
+                console.log("public key : ", serverKeys.pubKey);
             }
         });
+
+
 
         socket.on('chat data', function(message) {
             if (!chatReady) {

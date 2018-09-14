@@ -34,7 +34,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
-        title: 'Crypto Chat',
+        title: 'Diff-Hellman in Chat',
         message: err.message,
         error: err
     });
@@ -44,5 +44,6 @@ app.use(function(err, req, res, next) {
 var server = http.createServer(app);
 server.listen(3000);
 chat(app, server);
+console.log("App listening at 3000")
 
 module.exports = app;
